@@ -36,21 +36,14 @@ def add_contact(args, contacts):
 def change_contact(args, contacts):
     # Якщо аргументів < 2, викликає ValueError -> перехоплює декоратор
     name, phone = args
-    if name in contacts:
-        contacts[name] = phone
-        return "Contact updated."
-    else:
-        raise KeyError # Якщо контакту не існує, викликається KeyError -> перехоплює декоратор
-
+    contacts[name] = phone
+    return "Contact updated."
+    
 @input_error
 def show_phone(args, contacts):
-    # Якщо args[0] порожній, викликає IndexError -> перехоплює декоратор
     name = args[0]
-    if name in contacts:
-        return f"{name}: {contacts[name]}"
-    else:
-        raise KeyError # Якщо список контактів порожній, викликається KeyError -> перехоплює декоратор
-
+    return f"{name}: {contacts[name]}"
+    
 def show_all(contacts):
     if not contacts:
         return "No contacts saved yet."
